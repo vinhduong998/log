@@ -1,0 +1,106 @@
+/*CSS index.ejs file*/
+.container {
+  position: fixed;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top left, #485563, #29323c);
+  display: flex;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn_disconnect {
+  width: 100px;
+  height: 32px;
+  border-radius: 5px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.btn_disconnect:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.title {
+  color: skyblue;
+}
+
+#userForm {
+  margin-top: 44px;
+}
+
+.boxContent {
+
+}
+
+.userOnline {
+  color: skyblue;
+  margin-bottom: 4px;
+}
+
+.btn_disconnection {
+  margin-left: 12px;
+}
+
+.btn_showJson {
+  width: 120px; 
+  height: 32px;
+  border-radius: 5px;
+  margin-left: 12px;
+}
+
+.btn_showJson:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.btn_showTime {
+  width: 120px; 
+  height: 32px;
+  border-radius: 5px;
+  margin-left: 12px;
+  margin-top: 12px;
+}
+
+.btn_showTime:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+#login {
+  margin: 16px;
+  color: skyblue;
+}
+
+#btn_login {
+  margin-left: 8px;
+}
+
+#input_password {
+  margin-left: 4px;
+}
+
+#logout {
+  margin: 16px;
+  color: skyblue;
+  display: none;
+}
+
+#btn_logout {
+  margin-left: 8px;
+}
+
+#btn_login, #btn_logout:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
