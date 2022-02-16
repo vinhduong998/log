@@ -1,9 +1,4 @@
-/**
-* Created by nghinv on Thu Apr 11 2019
-* Copyright (c) 2019 nghinv@luci.vn
-*/
-
-import printBuffer from "./core";
+import printBuffer from './core';
 import defaults from './defaults';
 
 export function logger(logBuffer, options = {}) {

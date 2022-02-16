@@ -1,8 +1,3 @@
-/**
-* Created by nghinv on Wed Apr 10 2019
-* Copyright (c) 2019 nghinv@luci.vn
-*/
-
 'use strick';
 
 var express = require("express");
@@ -20,7 +15,7 @@ server.listen(process.env.PORT || 3000, function () {
 
 let users = [];
 let adminLogin = false;
-let password = "mylumi";
+let password = "fjobdev@";
 
 io.on("connection", function (socket) {
   console.log("Co nguoi vua ket noi id =", socket.id);

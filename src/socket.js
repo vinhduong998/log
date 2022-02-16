@@ -1,12 +1,7 @@
-/**
-* Created by nghinv on Wed Apr 10 2019
-* Copyright (c) 2019 nghinv@luci.vn
-*/
+import { logger } from './logger/loger';
 
-import { logger } from "./logger/loger";
-import { formatTime } from "./logger/helpers";
 //Đổi link này
-var socket = io("https://mylumi.herokuapp.com/");
+var socket = io("https://fjob-mobile.herokuapp.com/");
 // var socket = io("http://localhost:3000");
 console.log('Connecting to server')
 
