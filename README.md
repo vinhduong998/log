@@ -3,7 +3,7 @@ git commit -am "make it better"
 git push heroku master
 
 
-https://fjob-dev.herokuapp.com/
+https://fjobmobile.herokuapp.com/
 
 how to run
 
