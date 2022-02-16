@@ -1,7 +1,7 @@
 import { logger } from './logger/loger';
 
 //Đổi link này
-var socket = io("https://fjob-mobile.herokuapp.com/");
+var socket = io("https://fjob-dev.herokuapp.com/");
 // var socket = io("http://localhost:3000");
 console.log('Connecting to server')
 

@@ -1,12 +1,12 @@
 {
-  "name": "logmylumi",
+  "name": "logfjobmobile",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "NghiNguyen",
+  "author": "VinhDuong",
   "license": "ISC",
   "dependencies": {
     "deep-diff": "^1.0.2",
