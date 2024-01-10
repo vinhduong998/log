@@ -14,6 +14,7 @@ export function logger(logBuffer, options = {}) {
   } = loggerOptions;
 
   const diff = loggerOptions.diff && typeof diffPredicate === 'function'
+  //@ts-ignore
     ? diffPredicate(getState, action)
     : loggerOptions.diff;
 

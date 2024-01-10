@@ -15,7 +15,7 @@ server.listen(process.env.PORT || 3000, function () {
 
 let users = [];
 let adminLogin = false;
-let password = "fjobdev@";
+let password = "gamifa@";
 
 io.on("connection", function (socket) {
   console.log("Co nguoi vua ket noi id =", socket.id);

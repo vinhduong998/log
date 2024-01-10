@@ -1,4 +1,5 @@
 import { logger } from './logger/loger';
+import { io } from 'socket.io-client';
 
 //Đổi link này
 var socket = io("https://fjobmobile.herokuapp.com/");
@@ -151,11 +152,12 @@ $(document).on('click', '#btn_disconnection', function (event) {
   socket.emit("event_from_web_disconnect_user", { socket_id: socketId })
 });
 
-export const consoleCustom = (type, url, data, token, language, timeout) => {
+export const consoleCustom = (type, url, data, token, language, timeout, headers) => {
   console.groupCollapsed(`%cAPI::${type} ${url}`, 'color: green; font-weight: bold;')
   console.log('DATA::', JSON.stringify(data));
   console.groupCollapsed('TOKEN::')
   console.log(token)
+  console.log("HEADER::", headers)
   console.groupEnd();
   console.log('LANGUAGE::', language)
   console.log('TIMEOUT::', timeout)
