@@ -1,18 +1,29 @@
-'use strick';
+const express = require('express');
 
-var express = require("express");
-var app = express();
+
+const app = express();
+
+const { Server, Socket } = require("socket.io");
+const socket = require('http').createServer(app);
+
+const io = new Server(socket, {
+  cors: {
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["X-Total-Count", "X-Authorization"],
+    origin: "*",
+    credentials: true,
+    exposedHeaders: "*",
+    optionsSuccessStatus: 200
+  },
+});
+
+const server = require('http').createServer();
+
+
+
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.set("views", "./views");
-
-var server = require("http").Server(app);
-var io = require("socket.io")(server);
-
-server.listen(process.env.PORT || 3000, function () {
-  console.log("Server's listening....");
-});
-
 let users = [];
 let adminLogin = false;
 let password = "gamifa@";
@@ -91,5 +102,10 @@ io.on("connection", function (socket) {
 });
 
 app.get("/", function (req, res) {
+  console.log("render home");
   res.render("index")
 })
+
+socket.listen(3007)
+
+console.log(`NodeJS Server running at port 3007`);
