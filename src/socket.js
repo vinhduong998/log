@@ -117,7 +117,7 @@ $(function () {
   }))
 
   $("#btn_login").on("click", (function () {
-    console.log('onLogin')
+    console.log('onLogin', socket)
     socket.emit("client_login", $("#input_password").val())
     $("#input_password").val("");
   }))
