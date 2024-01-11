@@ -1,7 +1,7 @@
 import { logger } from './logger/loger';
 
 //Đổi link này
-const socket = io("https://log-git-master-to-thu-has-projects.vercel.app/");
+const socket = io("https://web-production-94d6.up.railway.app/");
 console.log('Connecting to server')
 
 let showJson = false;
