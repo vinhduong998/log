@@ -82,28 +82,11 @@ socket.on("event_from_app_to_web", function (dataSocket) {
   console.log(dataSocket)
 })
 
-socket.on("admin_had_login", function () {
-  $("#login").hide();
-  $("#logout").show();
-})
-
 socket.on("server_send_list_user", function (data) {
   $(".boxContent").html("");
   data.forEach(function (user) {
     $(".boxContent").append(`<li class='userOnline'><span>Gamifa</span><button socketId="${user.socket_id}" id="btn_disconnection" class="btn_disconnection">disconnection</button></li>`);
   })
-})
-
-socket.on("login_status", function (data) {
-  const { success } = data;
-
-  if (success) {
-    console.log('Login success')
-    $("#login").hide();
-    $("#logout").show();
-  } else {
-    alert("Mật khẩu không đúng")
-  }
 })
 
 $(function () {

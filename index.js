@@ -29,7 +29,6 @@ app.use(express.static(path.join(__dirname + '/public')));
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 let users = [];
-let adminLogin = true;
 
 io.on("connection", function (socket) {
   console.log("Co nguoi vua ket noi id =", socket.id);
@@ -38,21 +37,7 @@ io.on("connection", function (socket) {
     console.log("client_login =", socket.id);
   })
 
-  // neu chua login disable all connection
-  console.log('adminLogin--->', adminLogin)
-  if (!adminLogin) {
-    io.emit("event_from_web_to_app", { type: 'disconnect' })
-    users = [];
-    io.emit("server_send_list_user", users);
-
-    return;
-  }
-
   socket.emit("event_from_app_to_web", "connected to server")
-  if (adminLogin) {
-    socket.emit("admin_had_login")
-  }
-
   io.emit("server_send_list_user", users);
 
   socket.on("disconnect", function (data) {
