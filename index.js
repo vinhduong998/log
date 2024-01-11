@@ -109,6 +109,6 @@ app.get("/", function (req, res) {
   res.render("index")
 })
 
-socket.listen(3007)
-
-console.log(`NodeJS Server running at port 3007`);
+socket.listen(3007, "0.0.0.0", () => {
+  console.log(`NodeJS Server running at port 3007`);
+})
