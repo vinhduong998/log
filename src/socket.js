@@ -2,8 +2,8 @@ import { logger } from './logger/loger';
 import { io } from 'socket.io-client';
 
 //Đổi link này
-var socket = io("https://log-git-master-to-thu-has-projects.vercel.app/");
-// var socket = io("http://localhost:3000");
+// const socket = io("https://log-git-master-to-thu-has-projects.vercel.app/");
+const socket = io("http://localhost:3007");
 console.log('Connecting to server')
 
 let showJson = false;
@@ -91,7 +91,7 @@ socket.on("admin_had_login", function () {
 socket.on("server_send_list_user", function (data) {
   $(".boxContent").html("");
   data.forEach(function (user) {
-    $(".boxContent").append(`<li class='userOnline'><span>My Lumi</span><button socketId="${user.socket_id}" id="btn_disconnection" class="btn_disconnection">disconnection</button></li>`);
+    $(".boxContent").append(`<li class='userOnline'><span>Gamifa</span><button socketId="${user.socket_id}" id="btn_disconnection" class="btn_disconnection">disconnection</button></li>`);
   })
 })
 
