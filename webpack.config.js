@@ -1,13 +1,14 @@
 const nodeExternals = require('webpack-node-externals');
-const TerserPlugin = require( "terser-webpack-plugin" );
+const TerserPlugin = require("terser-webpack-plugin");
 const path = require('path');
 
 module.exports = [{
   entry: ['./src/socket.js'],
-  externals: [
-    nodeExternals({
-    }),
-  ],
+  // target: "node",
+  // externals: [
+  //   nodeExternals({
+  //   }),
+  // ],
   watch: false,
   mode: "production",
   resolve: {

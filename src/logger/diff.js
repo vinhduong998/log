@@ -1,5 +1,4 @@
-import differ from 'deep-diff';
-
+import isEqual from "./compare"
 // https://github.com/flitbit/diff#differences
 const dictionary = {
   E: {
@@ -42,7 +41,7 @@ export function render(diff) {
 }
 
 export default function diffLogger(prevState, newState, logger, isCollapsed) {
-  const diff = differ(prevState, newState);
+  const diff = isEqual(prevState, newState);
 
   try {
     if (isCollapsed) {
