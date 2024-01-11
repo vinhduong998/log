@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require("path");
 
 
 const app = express();
@@ -17,7 +18,7 @@ const io = new Server(socket, {
   },
 });
 
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname + '../public')));
 app.set("view engine", "ejs");
 app.set("views", "./views");
 let users = [];
