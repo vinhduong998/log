@@ -2,8 +2,7 @@ import { logger } from './logger/loger';
 import { io } from 'socket.io-client';
 
 //Đổi link này
-// const socket = io("https://log-git-master-to-thu-has-projects.vercel.app/");
-const socket = io("http://localhost:3007");
+const socket = io("https://log-91iajx7og-to-thu-has-projects.vercel.app/");
 console.log('Connecting to server')
 
 let showJson = false;
