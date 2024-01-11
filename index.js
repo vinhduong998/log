@@ -8,14 +8,21 @@ const { Server, Socket } = require("socket.io");
 const socket = require('http').createServer(app);
 
 const io = new Server(socket, {
-  // cors: {
-  //   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-  //   allowedHeaders: ["X-Total-Count", "X-Authorization"],
-  //   origin: "*",
-  //   credentials: true,
-  //   exposedHeaders: "*",
-  //   optionsSuccessStatus: 200
-  // },
+  cors: {
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    origin: "*",
+    credentials: true,
+    exposedHeaders: "*",
+    optionsSuccessStatus: 200
+  },
+});
+
+io.engine.on("initial_headers", (headers, req) => {
+  headers["Access-Control-Allow-Origin"] = req.headers.origin || '*';
+});
+
+io.engine.on("headers", (headers, req) => {
+  headers["Access-Control-Allow-Origin"] = req.headers.origin || '*'; // url to all
 });
 
 app.use(express.static(path.join(__dirname + '/public')));
