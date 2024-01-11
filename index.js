@@ -18,24 +18,17 @@ const io = new Server(socket, {
   },
 });
 
-app.use(express.static(path.join(__dirname + '../public')));
+app.use(express.static(path.join(__dirname + '/public')));
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 let users = [];
-let adminLogin = false;
-let password = "gamifa@";
+let adminLogin = true;
 
 io.on("connection", function (socket) {
   console.log("Co nguoi vua ket noi id =", socket.id);
 
   socket.on("client_login", function (data) {
     console.log("client_login =", socket.id);
-    if (data === password) {
-      adminLogin = true;
-      socket.emit("login_status", { success: true })
-    } else {
-      socket.emit("login_status", { success: false })
-    }
   })
 
   // neu chua login disable all connection
@@ -47,13 +40,6 @@ io.on("connection", function (socket) {
 
     return;
   }
-
-  socket.on("client_logout", function () {
-    adminLogin = false;
-    io.emit("event_from_web_to_app", { type: 'disconnect' })
-    users = [];
-    io.emit("server_send_list_user", users);
-  })
 
   socket.emit("event_from_app_to_web", "connected to server")
   if (adminLogin) {

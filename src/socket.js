@@ -106,44 +106,31 @@ socket.on("login_status", function (data) {
   }
 })
 
-$(document).ready(function () {
+$(function () {
   const labelShowHideJson = showJson ? "HideJSON" : "ShowJSON";
   $("#btn_showJson").html(labelShowHideJson)
   const labelShowHideTime = showTime ? "Hide Time" : "Show Time";
   $("#btn_showTime").html(labelShowHideTime)
 
-  $("#btn_disconnect").click(function () {
+  $("#btn_disconnect").on("click", function () {
     console.log('Sending disable connection to app')
     socket.emit("event_from_web_disconnect")
   })
 
-  $("#btn_login").click(function () {
-    console.log('onLogin')
-    socket.emit("client_login", $("#input_password").val())
-    $("#input_password").val("");
-  })
-
-  $("#btn_logout").click(function () {
-    console.log('logout')
-    socket.emit("client_logout")
-    $("#login").show();
-    $("#logout").hide();
-  })
-
-  $("#btn_showJson").click(function () {
+  $("#btn_showJson").on("click", function () {
     showJson = !showJson;
     console.log(`${showJson ? 'SHOW' : 'HIDE'} JSON`);
     const labelShowHideJson = showJson ? "HideJSON" : "ShowJSON";
     $("#btn_showJson").html(labelShowHideJson);
   })
 
-  $("#btn_showTime").click(function () {
+  $("#btn_showTime").on("click", function () {
     showTime = !showTime;
     console.log(`${showTime ? 'SHOW' : 'HIDE'} TIME`);
     const labelShowHideTime = showTime ? "Hide Time" : "Show Time";
     $("#btn_showTime").html(labelShowHideTime)
   })
-})
+});
 
 $(document).on('click', '#btn_disconnection', function (event) {
   let socketId = event.target.getAttribute('socketId');
