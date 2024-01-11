@@ -1,7 +1,7 @@
 import { logger } from './logger/loger';
 
 //Đổi link này
-const socket = io("https://log-ashy.vercel.app/");
+const socket = io("https://log-ashy.vercel.app/", { transports: ['websocket'] });
 console.log('Connecting to server')
 
 let showJson = false;
