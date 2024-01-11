@@ -29,15 +29,44 @@ app.use(express.static(path.join(__dirname + '/public')));
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 let users = [];
+let adminLogin = false;
+let password = "gamifa@";
 
 io.on("connection", function (socket) {
   console.log("Co nguoi vua ket noi id =", socket.id);
 
   socket.on("client_login", function (data) {
     console.log("client_login =", socket.id);
+    if (data === password) {
+      adminLogin = true;
+      socket.emit("login_status", { success: true })
+    } else {
+      socket.emit("login_status", { success: false })
+    }
+  })
+
+  // neu chua login disable all connection
+  console.log('adminLogin--->', adminLogin)
+  if (!adminLogin) {
+    io.emit("event_from_web_to_app", { type: 'disconnect' })
+    users = [];
+    io.emit("server_send_list_user", users);
+
+    return;
+  }
+
+  socket.on("client_logout", function () {
+    adminLogin = false;
+    io.emit("event_from_web_to_app", { type: 'disconnect' })
+    users = [];
+    io.emit("server_send_list_user", users);
   })
 
   socket.emit("event_from_app_to_web", "connected to server")
+  if (adminLogin) {
+    socket.emit("admin_had_login")
+  }
+
   io.emit("server_send_list_user", users);
 
   socket.on("disconnect", function (data) {
@@ -77,7 +106,6 @@ io.on("connection", function (socket) {
 });
 
 app.get("/", function (req, res) {
-  console.log("render home");
   res.render("index")
 })
 

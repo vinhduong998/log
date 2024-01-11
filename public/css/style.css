@@ -77,6 +77,30 @@
   transform: scale(1.1);
 }
 
+#login {
+  margin: 16px;
+  color: skyblue;
+}
+
+#btn_login {
+  margin-left: 8px;
+}
+
 #input_password {
   margin-left: 4px;
+}
+
+#logout {
+  margin: 16px;
+  color: skyblue;
+  display: none;
+}
+
+#btn_logout {
+  margin-left: 8px;
+}
+
+#btn_login, #btn_logout:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
