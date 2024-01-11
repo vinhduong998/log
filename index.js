@@ -8,14 +8,14 @@ const { Server, Socket } = require("socket.io");
 const socket = require('http').createServer(app);
 
 const io = new Server(socket, {
-  cors: {
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["X-Total-Count", "X-Authorization"],
-    origin: "*",
-    credentials: true,
-    exposedHeaders: "*",
-    optionsSuccessStatus: 200
-  },
+  // cors: {
+  //   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  //   allowedHeaders: ["X-Total-Count", "X-Authorization"],
+  //   origin: "*",
+  //   credentials: true,
+  //   exposedHeaders: "*",
+  //   optionsSuccessStatus: 200
+  // },
 });
 
 app.use(express.static(path.join(__dirname + '/public')));
