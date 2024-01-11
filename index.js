@@ -17,10 +17,6 @@ const io = new Server(socket, {
   },
 });
 
-const server = require('http').createServer();
-
-
-
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.set("views", "./views");

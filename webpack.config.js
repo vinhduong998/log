@@ -3,28 +3,13 @@ const TerserPlugin = require( "terser-webpack-plugin" );
 const path = require('path');
 
 module.exports = [{
-  entry: ['./index.js'],
+  entry: ['./src/socket.js'],
   externals: [
     nodeExternals({
     }),
   ],
   watch: false,
   mode: "production",
-  // module: {
-  //   rules: [
-  //     {
-  //       test: /\.lock|\.prisma|\.d\.ts|\.pem|\.md|\.map$/,
-  //       use: "ignore-loader",
-  //     },
-
-  //     {
-  //       test: /.ts?$/,
-  //       use: "ts-loader",
-  //       exclude: /node_modules/
-  //     },
-  //   ],
-    
-  // }, 
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".json"],
     alias: {
