@@ -56,7 +56,7 @@ socket.on("event_from_app_to_web", function (dataSocket) {
 
     const { url, token, time, config, data } = payload;
 
-    consoleCustom(`${method}`, url, token, config, data);
+    consoleCustom(`${method}`, url,token, config, data);
     showTime && console.log('TIME_CALL_API::', time)
 
     return;
@@ -66,22 +66,7 @@ socket.on("event_from_app_to_web", function (dataSocket) {
     const { payload } = dataSocket;
 
     if (!!payload) {
-      try {
-        if (typeof payload === "string") {
-          const array = payload.split("::")
-          if (array.length > 1) {
-            const [title, data] = array
-            console.log(title, JSON.parse(`${data.trim()}`))
-          } else {
-            console.log(JSON.parse(`${array?.[0] || ""}`))
-          }
-        } else {
-          console.log(payload)
-        }
-      } catch (error) {
-        console.log(payload)
-      }
-
+      console.log(payload)
       return;
     }
   }
@@ -169,7 +154,7 @@ export const consoleCustom = (type, url, token, xChannel, data) => {
   try {
     _data = JSON.parse(`${data}`)
   } catch (error) {
-
+    
   }
   console.groupCollapsed(`%cAPI::${type} ${url}`, 'color: green; font-weight: bold;')
   console.log('DATA::', _data);
