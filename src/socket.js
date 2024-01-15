@@ -54,9 +54,9 @@ socket.on("event_from_app_to_web", function (dataSocket) {
 
     if (!method || !payload) return;
 
-    const { url, data, token, language, timeout, headers, time } = payload;
+    const { url, token, time, config, data } = payload;
 
-    consoleCustom(`${method}`, url, data, token, language, timeout, headers);
+    consoleCustom(`${method}`, url,token, config, data);
     showTime && console.log('TIME_CALL_API::', time)
 
     return;
@@ -89,7 +89,7 @@ socket.on("admin_had_login", function () {
 socket.on("server_send_list_user", function (data) {
   $(".boxContent").html("");
   data.forEach(function (user) {
-    $(".boxContent").append(`<li class='userOnline'><span>My Lumi</span><button socketId="${user.socket_id}" id="btn_disconnection" class="btn_disconnection">disconnection</button></li>`);
+    $(".boxContent").append(`<li class='userOnline'><span>${user.name}</span><button socketId="${user.socket_id}" id="btn_disconnection" class="btn_disconnection">disconnection</button></li>`);
   })
 })
 
@@ -150,14 +150,12 @@ $(document).on('click', '#btn_disconnection', function (event) {
   socket.emit("event_from_web_disconnect_user", { socket_id: socketId })
 });
 
-export const consoleCustom = (type, url, data, token, language, timeout, headers) => {
+export const consoleCustom = (type, url, token, xChannel, data) => {
   console.groupCollapsed(`%cAPI::${type} ${url}`, 'color: green; font-weight: bold;')
-  console.log('DATA::', JSON.stringify(data));
+  console.log('DATA::', data);
   console.groupCollapsed('TOKEN::')
   console.log(token)
-  console.log("HEADER::", headers)
+  console.log("X-Channel::", xChannel)
   console.groupEnd();
-  console.log('LANGUAGE::', language)
-  console.log('TIMEOUT::', timeout)
   console.groupEnd();
 }
