@@ -54,8 +54,6 @@ socket.on("event_from_app_to_web", function (dataSocket) {
 
     if (!method || !payload) return;
 
-    console.log("payload", payload, dataSocket);
-
     const { url, token, time, config, data } = payload;
 
     consoleCustom(`${method}`, url,token, config, data);
@@ -153,8 +151,14 @@ $(document).on('click', '#btn_disconnection', function (event) {
 });
 
 export const consoleCustom = (type, url, token, xChannel, data) => {
+  let _data = {}
+  try {
+    _data = JSON.parse(`${data}`)
+  } catch (error) {
+    
+  }
   console.groupCollapsed(`%cAPI::${type} ${url}`, 'color: green; font-weight: bold;')
-  console.log('DATA::', data);
+  console.log('DATA::', _data);
   console.groupCollapsed('TOKEN::')
   console.log(token)
   console.log("X-Channel::", xChannel)
