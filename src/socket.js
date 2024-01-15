@@ -54,6 +54,8 @@ socket.on("event_from_app_to_web", function (dataSocket) {
 
     if (!method || !payload) return;
 
+    console.log("payload", payload);
+
     const { url, token, time, config, data } = payload;
 
     consoleCustom(`${method}`, url,token, config, data);
